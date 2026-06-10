@@ -90,3 +90,19 @@
 #        print(f"this {c} is palindrome")
 # else :
 #        print(f"{c} not palindrome")
+
+num = 123
+count = 0
+gnum = int(input("guess the no."))
+while(num!=gnum):
+    count += 1
+    if num > gnum:
+        print("your no. is lesser than actual no.")
+    else:
+        print("your no is bigger than actual no.")
+    gnum = int(input("guess the no."))
+
+if num == gnum:
+    count+=1
+    print("you'r guess is correct")
+    print(f"you guessed in {count} attempts")
