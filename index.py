@@ -1,108 +1,81 @@
-# 1) Create Table
-# n = int(input("Which table you want to :-"))
-# for i in range(1,11):
-#     print(f"{n} X {i} = {n*i}")
+# Creating a function
+# def Palindrome(a):
+#     copy = a
+#     rev = 0
+#     while a > 0:
+#         rev = rev * 10 + a % 10
+#         a = a//10
 
-# 2) Odd Even Count
-# oddsum = 0
-# evensum = 0
-# n = int(input("Which table you want to :-"))
-# for i in range(1,n+1):
-#     if i % 2 == 0:
-#         evensum+=i
+#     if rev == copy:
+#         print(f"{rev} is a palidrome no.")
+#     else :
+#         print(f"{rev} is not a Palidrome no.")
+
+# Palindrome(121)
+# Palindrome(1212)
+
+# Palindrome Word
+# def palidrome_word(a):
+#     rev = ""
+#     for i in range(len(a)-1, -1, -1):
+#         rev += a[i]
+
+#     if a==rev:
+#         print("It's Palindrome Word")
 #     else:
-#         oddsum+=i
+#         print("It's Not a Palindrome Word")
 
-# print(evensum)
-# print(oddsum)
+# palidrome_word("NAMAN")
+# palidrome_word("NAMASTE")
 
-# 3) Reverse String
-# a = "Akanksha"
-# str =""
-# for i in range(len(a)-1,-1,-1):
-#     str+=a[i]
-# print(str)
 
-# 4) Check palindrome
-# a = "NAMAN"
-# str =""
-# for i in range(len(a)-1,-1,-1):
-#     str+=a[i]
+# Types of Argument
 
-# if str == a:
-#     print("Yes it's palindrome word")
-# else:
-#     print("No it's not palindrome word")
+# 1) Postional Argument
 
-# 5) Check if a no. is perfect(sum of factors = the number itself)
-# n = int(input("Enter a number: "))
+# def pos(a,b,c,d):
+#     print(a+b+c+d)
+# pos(1,2,3,4) # a=1 b=2 c=3 d=4
 
-# sum_factors = 0
+# 2) Default Argument
+# def default_arg(name = "Nidhi"):
+#     print(f"My Name is {name}")
+# default_arg() # we does not need to provide any agrument while calling function also we can provide value to variable as well.
 
-# for i in range(1, n // 2 + 1):
-#     if n % i == 0:
-#         sum_factors += i
+# 3) KeyWord Argument
 
-# if sum_factors == n:
-#     print("Perfect Number")
-# else:
-#     print("Not a Perfect Number")
+# def keyword_arg(a,b,c):
+#     print(a-b-c)
+# keyword_arg(c=4,a=10,b=1) 
 
-# 6) count symbols from string
-# str = "!@#$%^&*()1231123213adhjkdkjfsjksdfhsf"
-# char = 0
-# spchar = 0
-# digits = 0
-# for i in str:
-#     if i.isalpha():
-#         char+=1
-#     elif i.isdigit():
-#         digits +=1
-#     else:
-#         spchar+=1
-# print(f"char {char}, special character {spchar}, digits {digits}")
 
-# str = "!@#$%^&*()1231123213adhjkdkjfsjksdfhsf"
-# char = 0
-# spchar = 0
-# digits = 0
-# for i in str:
-#     if (ord(i)>=97 and ord(i)<=122) or (ord(i)>=65 and ord(i)<=90):
-#         char+=1
-#     elif ord(i)>=48 and ord(i)<=57:
-#         digits +=1
-#     else:
-#         spchar+=1
-# print(f"char {char}, special character {spchar}, digits {digits}")
+# LIST
+# ordered, mutable, Indexing start from 0
 
-# a = 123
-# while a > 0:
-#     print(a%10)
-#     a //= 10 
+l = [10,12,12,32,43,12]
+# l[1] = 13
+# print(l) you can change the value as well
 
-# a = 1212
-# b = 0
-# c = a
-# while a > 0:
-#        b = b * 10 + a % 10
-#        a //= 10  
-# if c == b:
-#        print(f"this {c} is palindrome")
-# else :
-#        print(f"{c} not palindrome")
+for i in range(0,len(l)):
+    print(f"{i} = {l[i]}")
 
-num = 123
-count = 0
-gnum = int(input("guess the no."))
-while(num!=gnum):
-    count += 1
-    if num > gnum:
-        print("your no. is lesser than actual no.")
-    else:
-        print("your no is bigger than actual no.")
-    gnum = int(input("guess the no."))
 
-if num == gnum:
-    count+=1
-    print("you'r guess is correct")
-    print(f"you guessed in {count} attempts")
+
+
+
+# Q1
+# Print all positive and negative elements separately.
+input= [3, -1, 4, -5, 9]
+positive = []
+negative = []
+for i in input:
+    if i > 0:
+        positive.append(i)
+    elif i < 0:
+        negative.append(i)
+print(positive)
+print(negative)
+
+# Q2
+# Find the mean (average) of all list elements.
+    
