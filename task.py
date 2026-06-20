@@ -14,3 +14,12 @@ while True:
     
     elif com < user:
         print("Wrong! go little lower")
+
+
+# import random
+
+# choices = ["stone", "paper", "scissor"]
+
+# computer_choice = random.choice(choices)
+
+# print("Computer chose:", computer_choice)
