@@ -117,18 +117,20 @@ l = [10,12,12,32,43,12]
 # Input: [4, 8, 2, 9, 1]
 a = [4, 8, 2, 9, 100]
 largest = a[0]
-# second_largest = a[0]
-# for i in a:
-#     if largest < i :
-#         second_largest = largest
-#         largest = i
-# print(f"The second greatest element is {second_largest}, and the greatest element is {largest}")
-ind= 0
-for i in range(len(a)):
-    if largest < a[i]:
-        largest = a[i]
-        ind = i
-print(f"The greatest element is {largest} at index {ind}")
+second_largest = a[0]
+for i in a:
+    if largest < i :
+        second_largest = largest
+        largest = i
+    elif second_largest < i and i != largest:
+        second_largest = i
+print(f"The second greatest element is {second_largest}, and the greatest element is {largest}")
+# ind= 0
+# for i in range(len(a)):
+#     if largest < a[i]:
+#         largest = a[i]
+#         ind = i
+# print(f"The greatest element is {largest} at index {ind}")
 
 # Q5
 # Check if the list is already sorted.
@@ -138,12 +140,11 @@ is_sorted = True
 for i in range(len(a) - 1):
     if a[i] > a[i + 1]:
         is_sorted = False
+        print("The list is not sorted.")
         break
 
-if is_sorted:
-    print("The list is already sorted.")
 else:
-    print("The list is not sorted.")
+    print("The list is already sorted.")
 
 #WRITING FUNCTION FOR Q5
 def is_sorted(lst):
@@ -155,6 +156,29 @@ def is_sorted(lst):
     return True
 
 is_sorted(a)
+
+
+
+#TUPLE 
+# ordered, immutable, Indexing start from 0
+a = (1, 2, 3, 4, 5)
+# a[0] = 10 # you cannot change the value of tuple as it is immutable
+a = (10, 20, 30, 40, 50) # you can reassign the value of tuple but you cannot change the value of tuple
+print(a)
+
+print(a.count(10)) # count : returns the number of occurrences of a specified value in the tuple.
+
+print(a.index(30)) # index : returns the index of the first occurrence of a specified value in the tuple. If the value is not found, it raises a ValueError.
+
+def tuple_fun():
+    return "Hello, I am a tuple function!", 2026, "Python is fun!"
+
+result = tuple_fun()
+msg, year, comment = result
+print(msg)      # Output: Hello, I am a tuple function!
+print(year)     # Output: 2026
+print(comment)  # Output: Python is fun!
+
 
 # You're studying tutorials but not building projects.
 # You're learning too many things and mastering none.
