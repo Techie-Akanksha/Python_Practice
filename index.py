@@ -217,6 +217,85 @@ print(numbers)
 numbers.discard(500)
 print(numbers)
 
+# 5) Use the pop() method to remove an element from a set:
+poped = numbers.pop()
+print(numbers)
+print(poped)
+
+# 6)Count unique elements
+unique_elements = len(set([1, 2, 2, 3, 4, 4, 5]))
+print(unique_elements)
+
+def find_unique_elements(input_list):
+    unique_set = set(input_list)
+    print(len(unique_set))
+
+find_unique_elements([1, 2, 2, 3, 4, 4, 5])
+
+# 7) Remove duplicates
+numbers = [1, 2, 2, 3, 4, 4, 5]
+unique_numbers = list(set(numbers))
+print(unique_numbers)
+
+# 8)Find common elements
+A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+print(A & B)  # Output: {3, 4}
+
+# 9) Find unique elements
+A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+print(A ^ B)  # Output: {1, 2, 5, 6}
+
+# 10)Merge two sets
+A = {1, 2, 3}
+B = {4, 5, 6}
+print(A | B)  # Output: {1, 2, 3, 4, 5, 6}
+
+# 11)Print all elements Print each element using a loop.
+s = {10, 20, 30, 40}
+for i in s:
+    print(i)
+
+# 12) Find maximum element Find the largest element without using max().
+s = {25, 10, 45, 5, 60}
+max = 0
+for i in s:
+    if i > max:
+        max = i
+print(max)
+
+# 13)Find minimum element Find the smallest element without using min().
+s = {25, 10, 45, 5, 60}
+s = list(s)
+min = s[0]
+for i in s:
+    if i < min:
+        min = i
+print(min)
+
+# 14)Sum of all elements
+s = {10, 20, 30, 40}
+sum = 0 
+for i in s:
+    sum += i
+print(sum)
+
+# Check membership
+#15) Ask the user for a number and check whether it exists in the set.
+s = {10, 20, 30, 40}
+number = int(input("Enter a number: "))
+if number in s:
+    print("Number exists in the set.")
+else:
+    print("Number does not exist in the set.")
+
+# 16)Find duplicate values from a list
+# lst = [1, 2, 2, 3, 4, 4, 5]
+# new_lst = list(set(lst))
+# print(set(lst) - set(new_lst))
+
+
 # You're studying tutorials but not building projects.
 # You're learning too many things and mastering none.
 
