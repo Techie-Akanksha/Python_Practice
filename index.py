@@ -199,6 +199,24 @@ s2 = {1, 2, 3}
 print(s1.issuperset(s2))  # Output: True
 s1 >= s2  # Output: True
 
+# Set questions: 
+# 1) Create a set containing 5 different colors and print it.
+colors = {"red", "blue", "green", "yellow", "purple"}
+print(colors)
+
+# 2) Add elements to a set:
+numbers = {10, 20, 30, 40, 50}
+numbers.add(60)
+print(numbers)
+
+# 3) Remove an element from a set:
+numbers.remove(30)
+print(numbers)
+
+# 4)use the discard() create set discard 500 print sets
+numbers.discard(500)
+print(numbers)
+
 # You're studying tutorials but not building projects.
 # You're learning too many things and mastering none.
 
