@@ -1,299 +1,83 @@
-# #tuple quesition
-# # 1) Create a tuple containing 5 different fruits and print it.
-# fruits = ("apple", "Banana", "cherry", "date", "elderberry")
-# print(fruits)
+# DICTIONARY
 
-# # 2)Create a tuple with the values (10, 20, 30, 40, 50) and:
-# # Print the first element.
-# # Print the last element.
-# # Print the third element.
+#Learning Dictonary CRUD using vanilla python 
 
-# numbers = (10, 20, 30, 40, 50)
-# print(numbers[0])   # Output: 10
-# print(numbers[-1])  # Output: 50
-# print(numbers[2])   # Output: 30
+# Vanilla Python means plain, standard Python without any third-party libraries, frameworks, or custom modifications.
 
-# # 3)Print all elements using a loop.
-# numbers = (1, 2, 3, 4, 5) 
-# for num in numbers:
-#     print(num)
+#Create dictionary
+dic = {
+    "name" : "Ana",
+    "age" : 23
+}
 
-# # 4)Find the length of:
-# colors = ("red", "green", "blue", "yellow")
-# print(len(colors))
+#Assigning new key value to dictionary
+dic["profession"] = "Designer"
 
-# # 5) Check whether "apple" exists in:
-# fruits = ("banana", "apple", "mango", "grapes")
-# for i in fruits:
-#     if i == "apple":
-#         print("Found it!")
-#         break
-# else:
-#         print("Not found.")
+#Read the key or value in dictionary
+print(dic["name"]) 
 
-# # 6)Find the sum of all elements.
-# data = (5, 10, 15, 20, 25)
-# for i in data:
-#     sum = 0
-#     sum +=i
-# print(sum)
+#Updating the key value that already existing
+dic["profession"] = "Coder"
 
-# # 7)Count how many times 3 appears in:
-# nums = (1, 3, 5, 3, 7, 3, 9)
-# print(nums.count(3))
+#Deleting the key value from dictionary
+del dic["age"]
 
-# # 8)Find the index of "Python" in:
-# lang = ("Java", "C++", "Python", "JavaScript")
-# print(lang.index("Python"))
-
-# # 9)Convert the following list into a tuple:
-# my_list = [10, 20, 30, 40]
-# print(tuple(my_list))  # Output: (10, 20, 30, 40)
-
-# # 10)Convert the following tuple into a list:
-# my_tuple = (100, 200, 300)
-# print(list(my_tuple))  # Output: [100, 200, 300]
-
-# # 11)Concatenate:
-# t1 = (1, 2, 3)
-# t2 = (4, 5, 6)
-# print(t1 + t2)  # Output: (1, 2, 3, 4, 5, 6)
-
-# #12) Repeat the tuple:
-# t = ("A", "B")
-# print(t * 3)  # Output: ('A', 'B', 'A', 'B', 'A', 'B')
-# count = 0
-# # Repeat the tuple using loop
-# while count < 3:
-#     print(t)
-#     count += 1
-# # 13)into separate variables and print them.
-# student = ("Rahul", 20, "Mumbai")
-# name, age, city = student
-# print(f"Name: {name}, Age: {age}, City: {city}")
-
-# # 14)Use tuple unpacking to store:
-# # First value in a
-# # Last value in e
-# # Remaining values in middle
-# num = (1, 2, 3, 4, 5)
-# a, *middle, e = num
-# print(f"a: {a}, middle: {middle}, e: {e}")
-
-# # 15)Swap two variables using tuple unpacking:
-# x = 10
-# y = 20
-# x, y = y, x
-# print(f"x: {x}, y: {y}")
-
-# SETS
-# A set automatically removes duplicates and has no guaranteed order
-
-a = {1, 2, 3, 4, 5}
-print(type(a))  # Output: <class 'set'>
-# Remove duplicates from a list using a set
-my_list = [1, 2, 2, 3, 4, 4, 5]
-unique_set = set(my_list)
-print(unique_set)  # Output: {1, 2, 3, 4, 5}
-print(sum(unique_set))
-s = "hello"
-print(hash(s))  # Output: -903732784889659485
-# print(hash(s))  # Output: TypeError: unhashable type: 'set'
-
-a = {1, 2, 3, 4, 5}
-# for i in range(len(a)):
-#     print(a.pop())  # Output: 1, 2, 3, 4, 5 (order may vary)
-#     print(a)  # Output: {2, 3, 4, 5}, {3, 4, 5}, {4, 5}, {5}, set()
-
-a = {10, 20, 30, 40, 50,60,50,50}
-for i in a:
-    print(i)  # Output: 1, 2, 3, 4, 5 (order may vary)
-print(a)  
-
-# Add value in set: add() method adds a single element to the set. If the element already exists, it does nothing.
-a.add(160)
-print(a)
-
-# Clear complete set: clear() method removes all elements from the set, resulting in an empty set.
-a.clear()
-print(a)  # Output: set()
-
-#making Copy of set: copy() method returns a shallow copy of the set. It creates a new set with the same elements as the original set.
-a = {1, 2, 3, 4, 5}
-b = a.copy()
-print(b)
-
-# Discard value from set : discard removes the specified element from the set if it exists. If the element does not exist, it does nothing and does not raise an error.
-a.discard(3)
-print(a)
-
-# pop removes and returns an arbitrary element from the set. If the set is empty, it raises a KeyError. it randomly removes an element from the set, and the order of elements in a set is not guaranteed. Therefore, you cannot predict which element will be removed when using pop().
-a.pop()
-print(a)
-
-s1 = {10,20,30,40,50}
-s2 = {30,40,50,60,70}
-
-# Union of two sets: union() method returns a new set that contains all unique elements from both sets. It combines the elements of both sets without duplicates.
-s3 = s1.union(s2)
-print(s3)
-print(s1|s2)
-
-# update()	
-# |=	Update the set with the union of this set and others
-s1 |= s2
-print(s1)  # Output: {10, 20, 30, 40, 50, 60, 70}
-
-# Difference of two sets: difference() method returns a new set that contains elements that are in the first set but not in the second set.
-s4 = s1.difference(s2)
-print(s4)
-print(s1-s2)
-
-# difference_update()	
-# -=	Removes the items in this set that are also included in another, specified set
-s1 -= s2
-print(s1)  # Output: {10, 20, 30, 40, 50}
-
-# Intersection of two sets: intersection() method returns a new set that contains elements that are common to both sets.
-s5 = s1.intersection(s2)
-print(s5)
-print(s1&s2)
-
-# intersection_update()	
-# &=	Removes the items in this set that are not present in other, specified set(s)
-s1 &= s2
-print(s1)  # Output: {30, 40, 50}
-
-# Symmetric difference of two sets: symmetric_difference() method returns a new set that contains elements that are in either of the sets but not in both. It effectively combines the unique elements from both sets while excluding the common elements.
-s6 = s1.symmetric_difference(s2)
-print(s6)
-print(s1^s2)
-
-# symmetric_difference_update()	
-# ^=	
-# Inserts the symmetric differences from this set and another
-s1 ^= s2
-print(s1)
-
-# isdisjoint()
-# Returns True if two sets have no elements in common, otherwise False
-s1 = {1, 2, 3}
-s2 = {4, 5, 6}
-print(s1.isdisjoint(s2))  # Output: True
-
-s3 = {1, 2, 3}
-s4 = {3, 4, 5}
-print(s3.isdisjoint(s4))  # Output: False
-
-# issubset()
-# Returns True if all elements of the set are present in another set, otherwise False
-s1 = {1, 2, 3}
-s2 = {1, 2, 3, 4, 5}
-print(s1.issubset(s2))  # Output: True
-s1 <= s2  # Output: True
-
-# issupset()
-# Returns True if all elements of another set are present in the set, otherwise False
-s1 = {1, 2, 3, 4, 5}
-s2 = {1, 2, 3}
-print(s1.issuperset(s2))  # Output: True
-s1 >= s2  # Output: True
-
-# Set questions: 
-# 1) Create a set containing 5 different colors and print it.
-colors = {"red", "blue", "green", "yellow", "purple"}
-print(colors)
-
-# 2) Add elements to a set:
-numbers = {10, 20, 30, 40, 50}
-numbers.add(60)
-print(numbers)
-
-# 3) Remove an element from a set:
-numbers.remove(30)
-print(numbers)
-
-# 4)use the discard() create set discard 500 print sets
-numbers.discard(500)
-print(numbers)
-
-# 5) Use the pop() method to remove an element from a set:
-poped = numbers.pop()
-print(numbers)
-print(poped)
-
-# 6)Count unique elements
-unique_elements = len(set([1, 2, 2, 3, 4, 4, 5]))
-print(unique_elements)
-
-def find_unique_elements(input_list):
-    unique_set = set(input_list)
-    print(len(unique_set))
-
-find_unique_elements([1, 2, 2, 3, 4, 4, 5])
-
-# 7) Remove duplicates
-numbers = [1, 2, 2, 3, 4, 4, 5]
-unique_numbers = list(set(numbers))
-print(unique_numbers)
-
-# 8)Find common elements
-A = {1, 2, 3, 4}
-B = {3, 4, 5, 6}
-print(A & B)  # Output: {3, 4}
-
-# 9) Find unique elements
-A = {1, 2, 3, 4}
-B = {3, 4, 5, 6}
-print(A ^ B)  # Output: {1, 2, 5, 6}
-
-# 10)Merge two sets
-A = {1, 2, 3}
-B = {4, 5, 6}
-print(A | B)  # Output: {1, 2, 3, 4, 5, 6}
-
-# 11)Print all elements Print each element using a loop.
-s = {10, 20, 30, 40}
-for i in s:
+for i in dic: # To access the keys
     print(i)
 
-# 12) Find maximum element Find the largest element without using max().
-s = {25, 10, 45, 5, 60}
-max = 0
-for i in s:
-    if i > max:
-        max = i
-print(max)
+for i in dic.values(): # To access the values
+    print(i)
 
-# 13)Find minimum element Find the smallest element without using min().
-s = {25, 10, 45, 5, 60}
-s = list(s)
-min = s[0]
-for i in s:
-    if i < min:
-        min = i
-print(min)
+for key, value in dic.items(): # To access the values keys
+    print(key," = ", value)
 
-# 14)Sum of all elements
-s = {10, 20, 30, 40}
-sum = 0 
-for i in s:
-    sum += i
-print(sum)
+#Methods
+d = {1:10,2:20,3:30,4:40,5:50,6:60,7:70,8:80}
+ 
+# 1) clear() Removes all the elements from the dictionary
+d.clear()
+print(d)
 
-# Check membership
-#15) Ask the user for a number and check whether it exists in the set.
-s = {10, 20, 30, 40}
-number = int(input("Enter a number: "))
-if number in s:
-    print("Number exists in the set.")
-else:
-    print("Number does not exist in the set.")
+d = {1:10,2:20,3:30,4:40}
 
-# 16)Find duplicate values from a list
-# lst = [1, 2, 2, 3, 4, 4, 5]
-# new_lst = list(set(lst))
-# print(set(lst) - set(new_lst))
+# 2) fromkey() Returns a dictionary with the specified keys and value. dict.fromkeys(keys, value) 
+# keys → An iterable containing the keys.
+# value → Optional. The value assigned to all keys (default is None).
+# fromkeys() is a dictionary method that creates a new dictionary using a group of keys and assigns the same value to all of them.
+
+q = d.fromkeys([9,10],95)
+print(q)
+
+# 3) get() 	Returns the value of the specified key
+print(d.get(1))
+
+# 4) items() Returns a list containing a tuple for each key value pair
+print(d.items()) #[(1, 10), (2, 20), (3, 30), (4, 40)]
+#Here items() convert key,value into tuple and dict{} convert into list
+
+# 5)keys() Returns a list containing the dictionary's keys
+print(d.keys()) #dict_keys([1, 2, 3, 4])
+
+# 6)pop() Removes the element with the specified key
+# poped = d.pop(4)
+# print(poped)
+# print(d)
+
+# 7) popitem() Removes the last inserted key-value pair
+# poped = d.popitem() 
+# print(poped) #(3, 30)
+# print(d)
+
+# 8) setdefalt() Returns the value of the specified key. If the key does not exist: insert the key, with the specified value
+d.setdefault(4,400)
+print(d)
+
+# 9) update() Updates the dictionary with the specified key-value pairs
+d.update({1:1000}) #update existing keys with updated value
+d.update({5:50}) #update new key, value
+print(d)
+
+
 
 
 # You're studying tutorials but not building projects.
