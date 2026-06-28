@@ -1,33 +1,44 @@
-# File Modes
+import os
+from pathlib import Path
 
-# Mode	Meaning	Creates file?
-# 'r'	Read only	❌ (must exist)
-# 'w'	Write (overwrites!)	✅
-# 'a'	Append to end	✅
-# 'x'	Create (fails if exists)	✅
+def createfile():
+    try: 
+        filename = input("Enter your file name : ")
+        path = Path(filename)
+        if not path.exists():
+            with open(path, "w") as f:
+                data = input("Enter your content inside your file : ")
+                f.write(data)
+            print("File created successfully")
+        else:
+            print("Error your file is already exists")
+    
+    except Exception as err:
+        print(f"an error occured due as {err}")
 
-# "x" creates the file if it's not exist
-# open("hello.txt","x")
 
-#write file 
-new_file = open("hello.txt","w")
-data = input("Enter the data which you want in your file : ")
-new_file.write(data)
+def updatefile():
+    pass
+def readfile():
+    pass
+def deletefile():
+    pass
 
-#read the file
-read = open("hello.txt","r")
-print(read.read())
+print("press 1 for creating a new file")
+print("press 2 for updating an existing file")
+print("press 3 for reading an existing file")
+print("press 4 for deleting a file")
 
-#Append the content in the file 
-file = open("hello.txt","a")
-file.write("\n This are newly added content in this file.")
+response = int(input("Enter your response here :- "))
 
-# with open("te.py", "w") as f:
-#     f.write("hello python")
+if response == 1:
+    createfile()
+elif response == 2:
+    updatefile()
+elif response == 3:
+    readfile()
+elif response == 4:
+    deletefile()
+else:
+    print("Error: Your are not selecting proper action")
 
-# with open("te.txt", "r") as f:
-#     content = f.read()
-#     print(content)
-
-# with open("te.txt","a") as f:
-#     f.write("\nAdded a new line")
