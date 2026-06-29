@@ -1,7 +1,6 @@
-import os
 from pathlib import Path
 
-def createfile():
+def create_file():
     try: 
         filename = input("Enter your file name : ")
         path = Path(filename)
@@ -17,7 +16,7 @@ def createfile():
         print(f"an error occured as {err}")
 
 
-def updatefile():
+def update_file():
     try : 
         filename = input("Enter file name you want to update : ")
         path = Path(filename)
@@ -60,7 +59,7 @@ def updatefile():
         print(f"an error occured as {err}")  
 
 
-def readfile():
+def read_file():
     try : 
         filename = input("Enter your file name : ")
         path = Path(filename)
@@ -74,13 +73,15 @@ def readfile():
     except Exception as err:
         print(f"an error occured as {err}")
 
-def deletefile():
+def delete_file():
     try:
         filename = input("Enter your file name : ")
         path = Path(filename)
         if path.exists():
-            path.unlink()
-            print("File deleted successfully")
+            confirm = input("Deleting this file? (y/n): ")
+            if confirm.lower() == "y":
+                path.unlink()
+                print("File deleted successfully")
         else:
             print("Error there is no such file exists")
 
@@ -95,13 +96,13 @@ print("press 4 for deleting a file")
 response = int(input("Enter your response here :- "))
 
 if response == 1:
-    createfile()
+    create_file()
 elif response == 2:
-    updatefile()
+    update_file()
 elif response == 3:
-    readfile()
+    read_file()
 elif response == 4:
-    deletefile()
+    delete_file()
 else:
     print("Error: Select proper action")
 
