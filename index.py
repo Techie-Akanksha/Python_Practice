@@ -160,3 +160,15 @@ for detail in details:
         high_avg_score = avg
         student = name
 print(f"Student name is {student} who has highest average score")
+
+#Set Questions:
+#1) Create a set containing: 10, 20, 30, 40, 50 Print the set.
+num = {10,20,30,40,50}
+print(num)
+# 2)Create a set:{1, 2, 3}Add 4 and 5 to it.
+numbers = {1, 2, 3}
+
+numbers.add(4)
+numbers.add(5)
+
+print(numbers)
