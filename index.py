@@ -1,147 +1,162 @@
-from pathlib import Path
+#Practice Problems:
 
-# Function to create file
-def create_file():
-    try: 
-        filename = input("Enter your file name : ")
-        path = Path(filename)
-        if not path.exists():
-            # encoding="utf-8"avoids issues with non-English text.
-            with open(path, "w", encoding="utf-8") as f:
-                data = input("Enter your content inside your file : ")
-                f.write(data)
-            print("File created successfully")
-        elif not filename.strip():
-            print("Filename cannot be empty. Try again.")
-        else:
-            print("Error your file is already exists")
-    
-    except Exception as err:
-        print(f"an error occured as {err}")
+#1. Create a tuple of 10 numbers and print only the even numbers. 
+num = (1,2,3,4,5,6,7,8,9,10)
+for i in num:
+    if i % 2 == 0:
+        print(i)
 
-# Function to update file
-def update_file():
-    try : 
-        filename = input("Enter file name you want to update : ")
-        path = Path(filename)
+# 2. Given:
+# employees = (
+#     ("John", 50000),
+#     ("Emma", 65000),
+#     ("Mike", 55000)
+# )
+# Print the employee name with the highest salary.
 
-        if not filename.strip():
-            print("Please enter filename again.")
-            
+employees = (
+    ("John", 50000),
+    ("Emma", 65000),
+    ("Mike", 55000)
+)
 
-        elif path.exists():
-            print("Operations")
-            print("1. Renaming the file")
-            print("2. Append the content")
-            print("3. Overwriting the file")
+highest_name = employees[0][0]
+highest_salary = employees[0][1]
 
-            try:
-                choice = int(input("Enter your operation :- "))
+for employee in employees:
+    if employee[1] > highest_salary:
+        highest_salary = employee[1]
+        highest_name = employee[0]
+print(f"{highest_name} is person who has highest salary")
 
-                if choice == 1:
-                    new_filename = input("Enter new file name :- ")
-                    new_path = Path(new_filename)
-                    if not new_path.exists():
-                        path.rename(new_path)
-                        print("Renamed Successfully")
-                    else:
-                        print("Error this file name already exists")
-            
-                elif choice == 2:
-                    with open(path,"a") as fs:
-                        content = input("What do you want to append : ")
-                        fs.write("\n" + content)
-                    print("Content append successfully")
+# 3.Given:
+# marks = (85, 92, 78, 96, 88)
+# Find:
+# o	Maximum mark 
+# o	Minimum mark 
+# o	Average mark
 
-                elif choice == 3:
-                    # encoding="utf-8"avoids issues with non-English text.
-                    with open(path,"w",encoding="utf-8") as fs:
-                        content = input("Enter content to overwrite in file : ")    
-                        fs.write(content)
-                    print("Successfully overwritten")
-                else:
-                    print("Please Select proper action")
+marks = (85, 92, 78, 96, 88)
+max_marks = marks[0]
+min_marks = marks[0]
+total = 0
+tuple_len = len(marks)
+for mark in marks:
+    if mark < min_marks:
+        min_marks = mark
 
-            except ValueError as err:
-                print("ValueError:",err)
+    elif mark > max_marks:
+        min_marks = mark
 
-        else:                        
-            print("Error: File doesn't exist.")
-            tocreate = input("Create it? (y/n) : ")
-            if tocreate.lower() == "y":
-                create_file()
-            else:
-                print("Get your response : File doesn't exist")
+    total+=mark
 
+average_mark = total/tuple_len
+print(f"Maximum Marks : {max_marks}")
+print(f"Average Marks : {average_mark}")
+print(f"Minimum Marks : {min_marks}")
 
-    except Exception as err:
-        print(f"an error occured as {err}")  
+# 4.Remove duplicates from:
+nums = (1, 2, 2, 3, 4, 4, 5, 5)
+nums = tuple(set(nums))
+print(f"Tuple without duplicate values {nums}")
 
-# Function to read the file
-def read_file():
-    try : 
-        filename = input("Enter your file name : ")
-        path = Path(filename)
-        if not filename.strip():
-            print("Please enter filename again.")
+# 5.Sort the tuple:
+t = (9, 2, 7, 1, 5)
+sort = tuple(sorted(t))
+print(f"Sorted tuple : {sort}")
 
-        elif path.exists():
-            with open(path, "r") as fs:
-                content = fs.read()
-                print(f"Your file content is \n{content}")
+# 6.Find the second largest element in:
+nums = (10, 5, 20, 8, 15)
+lg_value = nums[0]
+second_lg = nums[0]
+for i in nums:
+    if lg_value < i:
+        second_lg = lg_value
+        lg_value = i
+    elif i > second_lg and i != lg_value:
+        second_lg = i
 
-        else:
-            print("Error: No such file exists")
+print(f"Second largest value : {second_lg}")
+ 
+# 7.Check whether a tuple is a palindrome:
+t = (1, 2, 3, 2, 1)
+is_palindrome = True
+for i in range(len(t)//2): #if (len = 5)//2 = 2 so iteration happens 2 times
+    #Why 2: Because after reaching the middle, the comparisons would repeat.
 
-    except Exception as err:
-        print(f"an error occured as {err}")
+    if t[i] != t[len(t)-1-i]:
+        is_palindrome = False
+        break
 
-# Function to delete file
-def delete_file():
-    try:
-        filename = input("Enter your file name : ")
-        path = Path(filename)
-        if not filename.strip():
-            print("Invalid Action. Enter your file name.")
-
-        elif path.exists():
-            confirm = input("Deleting this file? (y/n): ")
-
-            # Taking confirmation from user before deleting file. 
-            if confirm.lower() == "y":
-                path.unlink()
-                print("File deleted successfully")
-            else :
-                print("Thanks for confirming! Your file is not deleted.")
-
-        else:
-            print("Error: There is no such file exists")
-
-    except Exception as err:
-        print(f"an error occured as {err} ")
-
-
-
-print("""1. Create
-2. Update
-3. Read
-4. Delete""")
-    
-try : 
-    response = int(input("Enter your response here :- "))
-except ValueError:
-    print("Please enter numbers only.")
-
-    
-if response == 1:
-        create_file()
-elif response == 2:
-        update_file()
-elif response == 3:
-        read_file()
-elif response == 4:
-        delete_file()
-
+if is_palindrome:
+    print("It's palindrome")
 else:
-        print("Error: Select proper action")
+    print("It's not palindrome")
 
+
+# For Word Palindrome 
+
+# 1) Using a loop
+# word = "madam"
+
+# is_palindrome = True
+
+# for i in range(len(word) // 2):
+#     if word[i] != word[len(word) - 1 - i]:
+#         is_palindrome = False
+#         break
+
+# if is_palindrome:
+#     print("Palindrome")
+# else:
+#     print("Not a palindrome")
+    
+# 2)Using string slicing
+
+# word = "madam"
+
+# if word == word[::-1]:
+#     print("Palindrome")
+# else:
+#     print("Not a palindrome")
+
+
+# 8.Merge two tuples and remove duplicates
+
+t1 = (1, 2, 3, 4)
+t2 = (3, 4, 5, 6)
+
+# merge = tuple(set(t1+t2))
+merged = t1 + t2
+result = ()
+for i in merged:
+    if i not in result:
+        result+=( i,)
+
+print(f"Merge two tuples : {result}")
+
+# 9. Given a tuple of strings:Find the longest word.
+words = ("apple", "banana", "kiwi", "grapes", "mango")
+long_word = words[0]
+for i in words:
+    if len(long_word) < len(i):
+        long_word = i
+print(long_word)
+
+# 10.	Create a nested tuple containing student details:
+# Find the student with the highest average score.
+details = (
+    ("Alice", (85, 90, 88)),
+    ("Bob", (78, 80, 82)),
+    ("Charlie", (92, 95, 91))
+)
+student = details[0][0]
+high_avg_score = (details[0][1][0]+details[0][1][1]+details[0][1][2])/len(details[0][1])
+for detail in details:
+    name = detail[0]
+    score = detail[1]
+    avg = (score[0]+score[1]+score[2])/len(score)
+    if high_avg_score < avg:
+        high_avg_score = avg
+        student = name
+print(f"Student name is {student} who has highest average score")
