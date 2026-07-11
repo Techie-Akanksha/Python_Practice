@@ -1,120 +1,197 @@
 # OOPS CONCEPT
 
-# Polymorphism
-# Polymorphism is the ability of different objects to respond to the same method call in their own specific way.
-# Polymorphism is a core concept in Object-Oriented Programming (OOP). The word means "many forms" — and in programming, it allows the same interface or method name to behave differently depending on the object or context.
+# Encapsulation 
 
-class Greet:
-    def __init__(self,name):
+# Encapsulation ka matlab data ko hide karna nahi hai.
+
+# Encapsulation ka matlab hain :- Data aur us data par operate karne wale methods ko ek hi class ke andar rakhna aur direct access ko control karna.
+
+class Student:
+    def __init__(self, name, marks):
         self.name = name
-    def greet(self):
-        print(f"Heyy {self.name}, Welome to the Coding World!")
+        self.__marks = marks
 
-class Guest(Greet):
-    def __init__(self, name):
-        super().__init__(name)
+    def set_marks(self, marks):
+        if 0 <= marks and marks <= 100:
+            self.__marks = marks
+        else:
+            print("Invalid Marks")
 
-    def greet(self):
-        super().greet() #super keyword used for call methods from parent class inside the child class 
-        print(f"{self.name} happy to have you here!")
+    def get_marks(self):
+        return self.__marks
 
-obj = Guest("Rahul")
-obj.greet()
+s = Student("Ash", 80)
 
-# Polymorphism is the ability of the same method to perform different actions in different classes. A child class can redefine (override) a method of the parent class to provide its own behavior.
+print(s.get_marks())
 
-# Polymorphism is an OOP concept where the same method name behaves differently in different classes by using method overriding.
+s.set_marks(95)
 
-# types of polymorphism
+print(s.get_marks())
 
-# 1. Method Overloading
-# Method overloading means having the same method name but allowing it to work with different numbers or types of arguments.
+s.set_marks(-20)
 
-# Unlike Java or C++, Python does not allow multiple methods with the same name in the same class. If you define the same method twice, the last definition replaces the previous one.
+# Double underscore (__)
 
-class Demo:
-    def add(self, a, b):
-        print(a + b)
+# Ye Python ka convention hai jisse attribute ko name mangling ke through accidental direct access se bachaya jata hai.
+# Double underscore = Private Variable
 
-    def add(self, a, b, c):
-        print(a + b + c)
+# Python me true private variables nahi hote.Python trust-based language hai. Double underscore sirf name change karta hai. Isko kehte hain Name Mangling
 
-obj = Demo()
-obj.add(10, 20, 30)
+# Name Mangling 
 
-# The first add() method is ignored because the second one overwrites it.
+# Internal Working
 
-# still you want to achieve overloading in python. Python uses default arguments or *args..
-class Demo:
-    def add(self, a, b, c=0):
-        print(a + b + c)
+# Humne likha
 
-obj = Demo()
+# self.__marks = 80
 
-obj.add(10, 20)      # 30
-obj.add(10, 20, 30)  # 60
+# Python internally isse convert karta hai
 
-# Using *args
-class Demo:
-    def add(self, *numbers):
-        print(sum(numbers))
+# self._Student__marks
 
-obj = Demo()
+# Dhyan se dekho.
 
-obj.add(10, 20)
-obj.add(10, 20, 30)
-obj.add(10, 20, 30, 40)
-# Here, *args accepts any number of arguments.
+# Ye hide nahi hua.
 
-# Does Python support method overloading?
-# Python does not support method overloading like Java or C++. We achieve similar behavior using default arguments or *args.
+# Sirf rename hua.
 
-# 2. Method overriding
+# Memory me actual attribute ban gaya:
 
-# Method overriding is an OOP concept where a child class provides its own implementation of a method that is already defined in the parent class. The child method overrides the parent method.
+# Student Object
 
-class Animal:
-    def sound(self):
-        print("Animals make sounds")
+# ----------------------
 
-class Dog(Animal):
-    def sound(self):
-        print("Dog barks")
+# name = "Ash"
 
-obj = Dog()
-obj.sound()
+# _Student__marks = 80
 
-# Method Overriding with super()
+# ----------------------
 
-class Animal:
-    def sound(self):
-        print("Animals make sounds")
+# Isliye
 
-class Dog(Animal):
-    def sound(self):
-        super().sound()      # Calls parent method
-        print("Dog barks")
+# Ye chalega.
 
-obj = Dog()
-obj.sound()
+# print(s._Student__marks)
 
-# Here, super().sound() calls the parent class method first, and then the child class adds its own behavior.
 
-# 3. Operator Overloading
 
-# Python lets you redefine how operators like +, -, ==, >, etc., work for your own objects.
-# This is done using magic (dunder) methods such as __add__(), __eq__(), __lt__(), etc.
+# To phir double underscore ka fayda?
 
-class Number:
-    def __init__(self, value):
-        self.value = value
+# Ye intentionally direct access ko discourage karta hai aur subclasses me accidental name conflicts se bhi bachata hai.
 
-    def __add__(self, other):
-        return self.value + other.value
 
-n1 = Number(10)
-n2 = Number(20)
+#Q.1 Def:- Encapsulation is the process of bundling data and the methods that operate on that data into a single class while restricting uncontrolled direct access to the object's internal state. It helps protect data integrity by allowing validation through methods.
 
-print(n1 + n2)
+# Q2. Why do we use Encapsulation?
 
-# Normally, + adds numbers. Here, you've changed how + works for Number objects.
+# Data Protection
+# Validation
+# Maintainability
+# Controlled Access
+# Loose Coupling
+
+# Q3. Does Python support private variables?
+
+# Best interview answer:
+
+# Python does not have true private variables. It uses name mangling with double underscores (__) to reduce accidental access and avoid name conflicts, but the attributes can still be accessed using their mangled names if needed.
+
+# Ye answer beginners aur experienced candidates ke beech difference create karta hai.
+
+class Bank:
+
+    def __init__(self):
+        self.__balance = 1000 #self._Bank__balance = 1000 (Name Mangling)
+
+b = Bank()
+
+b.__balance = 5000 #yeh object mein ek naya variable banata hai.
+
+print(b.__balance) 
+
+# Name mangling sirf class definition ke andar __attribute references par apply hoti hai. Class ke bahar obj.__attribute likhne par Python us naam ko mangle nahi karta; wo ek alag attribute create kar sakta hai.
+
+# Q. Is class ko Encapsulation use karke complete karo:
+
+class Employee:
+
+    def __init__(self, name, salary):
+        # salary ko encapsulate karo
+        self.name = name
+        self.__salary = salary
+
+    def set_salary(self, salary):
+        # sirf salary > 0 allow ho
+        if 0 < salary:
+            self.__salary = salary
+        else:
+            print("Invalid Salary")
+
+    def get_salary(self):
+        return self.__salary
+    
+Employee1 = Employee("Rahul",20000)
+print(Employee1.get_salary())
+
+Employee1.set_salary(35000)
+print(Employee1.get_salary())
+
+
+# Q.1
+
+class Employee:
+
+    def __init__(self):
+        self.__salary = 50000
+
+emp = Employee()
+
+print(emp.__dict__)
+
+# Q. 2
+class Employee:
+
+    def __init__(self):
+        self.__salary = 50000
+
+emp = Employee()
+
+emp.__salary = 1000
+
+print(emp._Employee__salary)  #Python simply object ke andar exactly isi naam ka attribute dhundta hai.
+
+
+# Syntax	            Meaning
+# name	     Public attribute (sab access kar sakte hain)
+# _name	     Protected by convention (internal use; "please don't touch" signal)
+# __name	 Name mangling (accidental access aur subclass name conflicts se bachata hai)
+
+
+#__ private variable hota hai?
+
+#  Double underscore (__) triggers name mangling, where Python changes the attribute name internally to _ClassName__attribute. This helps prevent accidental access and name conflicts in inheritance, but it is not true privacy.
+
+
+
+# Internal Working
+# class className:
+#     def __init__(self):
+#         self.__attribute = "attribute"
+#     def show(self):
+#         return self.__attribute
+# clsname = className()
+# clsname.__attribute = "newattribute"
+
+# Object ki memory:
+
+# className
+
+# ↓
+
+# +--------------------------------------+
+
+# _className__attribute = 50000
+
+# __attribute = 1000
+
+# +--------------------------------------+
